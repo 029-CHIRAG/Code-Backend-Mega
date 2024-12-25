@@ -3,12 +3,21 @@ import { DBNAME } from './constants.js';
 import express from 'express';
 import dotenv from 'dotenv';
 import DBCONNECT from './db/index.js';
+import app from './app.js';
 
 dotenv.config()
 
-const app=express();
+// const app=express();
 
-DBCONNECT();
+DBCONNECT()
+.then(()=>{
+    app.listen(process.env.PORT,()=>{
+        console.log(`App is listening at port ${process.env.PORT}`);
+    })
+})
+.catch((error)=>{
+    console.log(`Database connection failed error`);
+})
 
 // ;(
 //     async()=>{

@@ -2,7 +2,14 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { DBNAME } from '../constants.js';
+import { asyncHandler } from '../utils/asyncHandler.js';
 dotenv.config({path:'./env'})
+
+// const DB=()=>{
+//     mongoose.connect(`${process.env.MONGO_URI}/${DBNAME}`)
+// }    // handle with asyncHandler {Don't do}
+
+// asyncHandler(DB)
 
 const DBCONNECT=async ()=>{
     try{
@@ -14,5 +21,9 @@ const DBCONNECT=async ()=>{
         process.exit(1);
     }
 }
+
+// const DBCONNECT=()=>{
+//     asyncHandler(DB);
+// }     {Bkchodi h mtt krio}
 
 export default DBCONNECT;
