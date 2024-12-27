@@ -10,4 +10,9 @@ app.use(express.urlencoded());
 app.use(express.static('Public'));
 app.use(cookieParser());
 
+
+//router defination
+import router from './routes/user.routes.js';
+app.use("/api/v1/users",router);   //Creating a middleware for now it will go to userRouter.From there we can run controllers.
+
 export default app;
